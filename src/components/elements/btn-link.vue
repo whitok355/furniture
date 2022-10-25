@@ -1,7 +1,7 @@
 <template>
   <div class="btn-link">
     <router-link to="/products" :class="activeClass">
-      {{ text }}
+      <slot />
     </router-link>
   </div>
 </template>
@@ -10,7 +10,6 @@ export default {
   props: {
     text: {
       type: String,
-      default: "View collection",
     },
     activeClass: {
       type: String,
@@ -25,7 +24,7 @@ export default {
   justify-content: center;
   align-items: center;
   &:hover &__linkWhite {
-    background: #f3f3f3;
+    background: var(--legitGrey);
     transform: scale(1.3);
     transition: 0.5s;
   }
@@ -37,7 +36,7 @@ export default {
   &__linkWhite {
     padding: 16px 114px;
     text-decoration: none;
-    color: #2a254b;
+    color: var(--darkPrimary);
     @media (min-width: 1440px) {
       & {
         padding: 16px 32px;
@@ -46,7 +45,7 @@ export default {
   }
   &__linkBlue {
     padding: 16px 118px;
-    color: white;
+    color: var(--white);
     text-decoration: none;
     opacity: 0.24;
     background: rgba(249, 249, 249, 0.15);

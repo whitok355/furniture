@@ -8,8 +8,8 @@
   </div>
 </template>
 <script>
-import deliveryIcon from "../svg/deliveryIcon.vue";
-import close from "../svg/close.vue";
+import deliveryIcon from "@/components/svg/deliveryIcon.vue";
+import close from "@/components/svg/close.vue";
 export default {
   components: { deliveryIcon, close },
   data() {
@@ -26,15 +26,18 @@ export default {
 </script>
 <style lang="scss" scoped>
 .delivery {
-  background: #2a254b;
+  background: var(--darkPrimary);
   height: fit-content;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  color: white;
+  color: var(--white);
   &__text {
     margin-left: 10px;
+  }
+  @media (min-width: 1440px) {
+    padding: 0 24px;
   }
 }
 </style>

@@ -6,14 +6,14 @@
     </div>
     <template v-for="(el, i) in navData" :key="i">
       <li class="navigation-li">
-        <a class="navigation-li__link" :href="el.link">{{ el.title }}</a>
+        <a :to="`/products/:${el.title}`" class="navigation-li__link">{{ el.title }} </a>
       </li>
     </template>
   </ul>
 </template>
 <script>
-import cart from "../svg/cart.vue";
-import user from "../svg/user.vue";
+import cart from "@/components/svg/cart.vue";
+import user from "@/components/svg/user.vue";
 export default {
   components: { cart, user },
   props: {
@@ -39,26 +39,6 @@ export default {
           title: "Tables",
           link: "#",
         },
-        {
-          id: 4,
-          title: "Chairs",
-          link: "#",
-        },
-        {
-          id: 5,
-          title: "Crockery",
-          link: "#",
-        },
-        {
-          id: 6,
-          title: "Tableware",
-          link: "#",
-        },
-        {
-          id: 7,
-          title: "Cutlery",
-          link: "#",
-        },
       ],
     };
   },
@@ -78,7 +58,7 @@ export default {
   padding: 20px 24px;
 
   &-li:hover &-li__link {
-    border-bottom: 1px solid #726e8d;
+    border-bottom: 1px solid var(--darkPrimary);
   }
   &-li {
     list-style-type: none;
@@ -87,7 +67,7 @@ export default {
     margin-bottom: 15px;
   }
   &-li__link {
-    color: #726e8d;
+    color: var(--grey);
     text-decoration: none;
   }
   @media (min-width: 768px) {

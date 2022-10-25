@@ -1,10 +1,17 @@
 <template>
-  <div class="product">
-    <div class="product-block"></div>
+  <div class="product animation">
+    <div class="product-block product-block-flex" v-if="loading"><loader /></div>
+    <div
+      class="product-block"
+      :style="{ backgroundImage: `url(${good.img})` }"
+      v-else
+    ></div>
     <div class="product-block">
       <div class="product-block-content">
-        <h2 class="product-block-content__title">The Dandy Chair</h2>
-        <p class="product-block-content__price">£ <span>250</span></p>
+        <h2 class="product-block-content__title">{{ good.title }}</h2>
+        <p class="product-block-content__price">
+          £ <span>{{ good.price }}</span>
+        </p>
         <div class="discription">
           <h4 class="discription__title">Product description</h4>
           <p class="discription__discr">
@@ -39,22 +46,25 @@
       <div class="quantity">
         <h4 class="quantity__title">Quantity</h4>
         <btnQuantity />
-        <btn :text="'Add to cart'" />
+        <btn>Add to cart</btn>
       </div>
     </div>
   </div>
-  <listingsNew :title="'You might also like'" />
-  <features />
-  <signUp />
 </template>
 <script>
-import features from "./Features.vue";
-import listingsNew from "./listings-block/Listings-new.vue";
-import signUp from "./elements/sign-up.vue";
-import btn from "./elements/btn.vue";
-import btnQuantity from "./elements/btn-quantity.vue";
+import loader from "@/components/elements/loader.vue";
+import btn from "@/components/elements/btn.vue";
+import btnQuantity from "@/components/elements/btn-quantity.vue";
 export default {
-  components: { features, listingsNew, signUp, btn, btnQuantity },
+  components: { loader, btn, btnQuantity },
+  props: {
+    good: {
+      type: Object,
+    },
+    loading: {
+      type: Boolean,
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -63,15 +73,20 @@ export default {
   flex-direction: column;
   @media (min-width: 1440px) {
     flex-direction: row;
+    min-height: 759px;
   }
 }
 .product-block {
   width: inherit;
   width: 100%;
   min-height: 100%;
+  &-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 .product-block:first-child {
-  background-image: url("/products/product.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -112,11 +127,11 @@ export default {
     margin-bottom: 15px;
   }
   &-column:nth-child(1) {
-    border-right: 1px solid #ebe8f4;
+    border-right: 1px solid var(--lightGrey);
     padding-right: 51.5px;
   }
   &-column:nth-child(2) {
-    border-right: 1px solid #ebe8f4;
+    border-right: 1px solid var(--lightGrey);
     padding-right: 51.5px;
   }
 }
@@ -129,8 +144,5 @@ export default {
     justify-content: space-between;
     margin-top: 34px;
   }
-}
-.sign-up {
-  margin-bottom: 119px;
 }
 </style>

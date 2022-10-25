@@ -37,8 +37,8 @@ export default {
   }
   &__button {
     padding: 16px 32px;
-    background: #2a254b;
-    color: #ffffff;
+    background: var(--darkPrimary);
+    color: var(--white);
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -55,19 +55,19 @@ export default {
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
-    background: #4e4d93;
+    background: var(--primary);
     border: none;
     &:hover {
       cursor: pointer;
     }
   }
   &__input::placeholder {
-    color: white;
+    color: var(--white);
   }
   &__button {
     padding: 15.5px 32px;
-    background: white;
-    color: #2a254b;
+    background: var(--white);
+    color: var(--black);
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -79,7 +79,7 @@ export default {
   }
   @media (min-width: 1440px) {
     &__input {
-      padding-right: 360px;
+      padding-right: 350px;
     }
   }
 }

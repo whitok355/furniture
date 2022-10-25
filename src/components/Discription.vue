@@ -13,13 +13,13 @@
           design community.</span
         >
       </p>
-      <btnLink :text="'Get in touch'" />
+      <btnLink>Get in touch</btnLink>
     </div>
     <div class="discription-image"></div>
   </div>
 </template>
 <script>
-import btnLink from "./elements/btn-link.vue";
+import btnLink from "@/components/elements/btn-link.vue";
 export default {
   components: { btnLink },
 };
@@ -34,7 +34,7 @@ export default {
     &__text {
       margin: 0;
       margin-top: 12px;
-      color: #505977;
+      color: var(--blueberry);
     }
   }
   &-image {
@@ -50,7 +50,7 @@ export default {
     flex-direction: row;
     &-content {
       width: 100%;
-      padding: 0;
+      padding-left: 24px;
       padding-bottom: 48px;
     }
     &-image {

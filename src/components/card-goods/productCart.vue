@@ -1,5 +1,5 @@
 <template>
-  <div class="product">
+  <div class="product animation">
     <div class="product-block">
       <div
         class="product-block__img"
@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import btnQuantity from "../elements/btn-quantity.vue";
+import btnQuantity from "@/elements/btn-quantity.vue";
 export default {
   components: { btnQuantity },
   props: {

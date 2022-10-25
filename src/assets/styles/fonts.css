@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Satoshi"), url("/font/Satoshi-Regular.otf") format("otf");
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Clash Display"), url("/font/ClashDisplay-Regular.woff") format("woff");
+}
+/*# sourceMappingURL=fonts.css.map */

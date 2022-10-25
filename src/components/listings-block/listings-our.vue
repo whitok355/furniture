@@ -1,53 +1,34 @@
 <template>
   <div class="listings-our">
     <h2 v-if="title" class="listings-our__title">{{ title }}</h2>
-    <div class="listings-our-items">
-      <listingItem v-for="(item, i) in listingsNew" :item="item" :key="i" />
+    <div class="loader-container" v-if="loading">
+      <loader />
     </div>
-    <btnLink />
+    <div class="listings-our-items" v-else>
+      <listingItem :goods="goods" />
+    </div>
+    <btnLink>View collection</btnLink>
   </div>
 </template>
 
 <script>
-import btnLink from "../elements/btn-link.vue";
-import listingItem from "../card-goods/listings-Item.vue";
-
+import btnLink from "@/components/elements/btn-link.vue";
+import listingItem from "@/components/card-goods/listings-Item.vue";
+import loader from "@/components/elements/loader.vue";
 export default {
-  components: { btnLink, listingItem },
+  components: { btnLink, listingItem, loader },
   props: {
     title: {
       type: String,
     },
-  },
-  data() {
-    return {
-      listingsNew: [
-        {
-          id: 1,
-          img: "/items/1.png",
-          title: "Rustic Vase Set",
-          price: 250,
-        },
-        {
-          id: 2,
-          img: "/items/2.png",
-          title: "The Lucy Lamp",
-          price: 399,
-        },
-        {
-          id: 3,
-          img: "/items/3.png",
-          title: "The Silky Vase",
-          price: 125,
-        },
-        {
-          id: 4,
-          img: "/items/4.png",
-          title: "The Dandy chair",
-          price: 250,
-        },
-      ],
-    };
+    goods: {
+      type: Array,
+    },
+    loading: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
   },
 };
 </script>
@@ -55,31 +36,38 @@ export default {
 <style lang="scss" scoped>
 .listings-our {
   margin-top: 86px;
-  padding: 0 24px;
-  &-items {
-    display: flex;
-    margin-top: 36px;
-    margin-bottom: 38px;
-    overflow: hidden;
+  &__title {
+    padding: 0 24px;
   }
   &-items:hover {
     overflow: auto;
   }
+  &-items {
+    max-width: 100%;
+    display: flex;
+    margin-top: 36px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    padding: 0 8px 0 24px;
+    @media (min-width: 768px) {
+      justify-content: space-between;
+      overflow: none;
+    }
+  }
 }
-.listings-item {
-  min-width: 200px;
-  min-height: 338px;
-  width: 100%;
-  &:not(:last-child) {
-    margin-right: 20px;
+.listings-our-items {
+  padding: 0 24px;
+}
+.listings-item:not(:first-child) {
+  margin-right: 16px;
+  @media (min-width: 768px) {
+    margin-right: 0;
   }
-  @media (min-width: 1440px) {
-    & {
-      min-width: 305px;
-    }
-    &:first-child {
-      min-width: 630px;
-    }
-  }
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="pop-up">
+  <div class="pop-up animation">
     <div class="pop-up-top">
       <h4
         id="signIn"
@@ -22,7 +22,7 @@
     <form class="pop-up-form" v-if="active">
       <input class="pop-up-form__el" placeholder="Enter your email" />
       <input class="pop-up-form__el" type="password" placeholder="Enter your password" />
-      <btn :text="'Sign in'" />
+      <btn>Sign in</btn>
     </form>
     <form class="pop-up-form" v-else>
       <input class="pop-up-form__el" placeholder="Enter your email" />
@@ -32,13 +32,13 @@
         type="password"
         placeholder="Please retry your password"
       />
-      <btn :text="'Registration'" />
+      <btn>Registration</btn>
     </form>
   </div>
 </template>
 <script>
-import btn from "./elements/btn.vue";
-import close from "./svg/close.vue";
+import btn from "@/components/elements/btn.vue";
+import close from "@/components/svg/close.vue";
 export default {
   components: { btn, close },
   data() {
@@ -69,7 +69,7 @@ export default {
   padding: 10px 20px;
   z-index: 1;
   width: 70%;
-  background: white;
+  background: var(--white);
   border-radius: 20px;
   -webkit-box-shadow: 0px 4px 52px 63px rgba(209, 208, 210, 0.4);
   -moz-box-shadow: 0px 4px 52px 63px rgba(209, 208, 210, 0.4);

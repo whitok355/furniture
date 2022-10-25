@@ -10,7 +10,7 @@
           <li class="footer-top-links-ul__li">
             <a class="footer-top-links-ul__link" href="#">Best sellers</a>
           </li>
-          <li class="footer-top-links- ul__li">
+          <li class="footer-top-links-ul__li">
             <a class="footer-top-links-ul__link" href="#">Recently viewed</a>
           </li>
           <li class="footer-top-links-ul__li">
@@ -182,8 +182,8 @@
   </footer>
 </template>
 <script>
-import forms from "./elements/form.vue";
-import lines from "./elements/line.vue";
+import forms from "@/components/elements/form.vue";
+import lines from "@/components/elements/line.vue";
 export default {
   components: { forms, lines },
 };
@@ -191,7 +191,7 @@ export default {
 <style lang="scss" scoped>
 .footer {
   padding-bottom: 20px;
-  background: #2a254b;
+  background: var(--darkPrimary);
 }
 .footer-top {
   display: flex;
@@ -219,14 +219,17 @@ export default {
     padding-inline-start: 0;
     &__title {
       margin: 0;
-      color: white;
+      color: var(--white);
       margin-bottom: 12px;
     }
     &__li:hover &__link {
-      border-bottom: 1px solid white;
+      border-bottom: 1px solid var(--white);
+    }
+    &__li {
+      margin-bottom: 12px;
     }
     &__link {
-      color: white;
+      color: var(--white);
     }
   }
   @media (min-width: 768px) {
@@ -247,7 +250,7 @@ export default {
 }
 .footer-sign-up {
   &__title {
-    color: white;
+    color: var(--white);
     margin: 0;
     margin-bottom: 16px;
   }
@@ -255,7 +258,7 @@ export default {
 .footer-bottom {
   padding: 0 24px;
   &-copyright {
-    color: white;
+    color: var(--white);
     text-align: center;
     margin-top: 20px;
   }
@@ -266,7 +269,7 @@ export default {
       transition: 0.5s;
     }
     &-li:hover path {
-      fill: #4e4d93;
+      fill: var(--primary);
     }
   }
   @media (min-width: 768px) {

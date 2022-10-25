@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import FeaturesBox from "./Features-box.vue";
+import FeaturesBox from "@/components/Features-box.vue";
 export default {
   components: { FeaturesBox },
   data() {
@@ -50,7 +50,7 @@ export default {
   margin-top: 48px;
   padding: 0 24px;
   &__title {
-    color: #2a254b;
+    color: var(--darkPrimary);
   }
   @media (min-width: 1440px) {
     margin-top: 120px;

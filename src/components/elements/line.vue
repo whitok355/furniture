@@ -27,7 +27,7 @@ export default {
   height: 2px;
 }
 .line-blue {
-  background: #4e4d93;
+  background: var(--primary);
 }
 .line-grey {
   background: rgba(0, 0, 0, 0.1);

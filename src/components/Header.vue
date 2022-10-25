@@ -22,9 +22,9 @@
   </header>
 </template>
 <script>
-import cart from "./svg/cart.vue";
-import user from "./svg/user.vue";
-import search from "./svg/search.vue";
+import cart from "@/components/svg/cart.vue";
+import user from "@/components/svg/user.vue";
+import search from "@/components/svg/search.vue";
 export default {
   components: { cart, user, search },
   methods: {
@@ -46,7 +46,7 @@ export default {
   grid-template-areas: "logo search menu";
   padding: 20px 24px;
   &-title {
-    color: #22202e;
+    color: var(--black);
     text-decoration: none;
     text-align: center;
   }

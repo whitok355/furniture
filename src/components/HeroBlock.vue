@@ -9,13 +9,15 @@
         with nice fonts, tasteful colors and a beautiful way to display things digitally
         using modern web technologies.
       </p>
-      <btnLink id="content-btn" :activeClass="'btn-link__linkBlue'" />
+      <btnLink id="content-btn" :activeClass="'btn-link__linkBlue'"
+        >View collection</btnLink
+      >
     </div>
     <div id="content-image" class="hero-block-image"></div>
   </div>
 </template>
 <script>
-import btnLink from "./elements/btn-link.vue";
+import btnLink from "@/components/elements/btn-link.vue";
 export default {
   components: { btnLink },
 };
@@ -23,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 .hero-block {
   padding: 40px 24px 24px;
-  background: #2a254b;
+  background: var(--darkPrimary);
   @media (min-width: 1440px) {
     display: flex;
     padding: 0;
@@ -32,13 +34,13 @@ export default {
 }
 .hero-block-content {
   &__title {
-    color: white;
+    color: var(--white);
   }
   &__discription {
     font-weight: 400;
     font-size: 18px;
     line-height: 27px;
-    color: white;
+    color: var(--white);
     padding-top: 80px;
     margin: 0;
   }

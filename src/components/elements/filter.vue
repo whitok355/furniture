@@ -3,10 +3,10 @@
     <div class="sorting">
       <h5 class="sorting__title">Sorting</h5>
       <ul class="sorting-params">
-        <li p="sorting-params__param">Price app</li>
-        <li p="sorting-params__param">Price down</li>
-        <li p="sorting-params__param">first A</li>
-        <li p="sorting-params__param">First Z</li>
+        <li class="sorting-params__param">Price app</li>
+        <li class="sorting-params__param">Price down</li>
+        <li class="sorting-params__param">first A</li>
+        <li class="sorting-params__param">First Z</li>
       </ul>
     </div>
     <div class="filtering">
@@ -52,7 +52,7 @@
     top: 35px;
     left: 0;
     display: inline-block;
-    background: #f2f2f2;
+    background: var(--leghtGrey);
     padding: 10px;
     border-radius: 10px;
     width: max-content;
@@ -60,7 +60,7 @@
   &-params {
     display: none;
     &__param:hover {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid var(--black);
     }
     &__param {
       margin-top: 5px;
@@ -94,7 +94,7 @@
     top: 35px;
     left: -50px;
     display: inline-block;
-    background: #f2f2f2;
+    background: var(--leghtGrey);
     padding: 10px;
     border-radius: 10px;
     width: max-content;
@@ -102,7 +102,7 @@
   &-params {
     display: none;
     &__param:hover {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid var(--black);
     }
     &__param {
       margin-top: 5px;

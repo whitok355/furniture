@@ -8,7 +8,7 @@
     </div>
     <lines :colorClass="'line-grey'" />
     <div class="cart-products">
-      <template v-for="(good, i) in cartGoods" :key="i">
+      <template v-if="cartGoods.length != 0" v-for="(good, i) in cartGoods" :key="i">
         <div class="container-product">
           <div class="product">
             <div class="product-block">
@@ -30,6 +30,11 @@
           <p class="product-total">£ <span>85</span></p>
         </div>
       </template>
+      <template v-else>
+        <div class="container-product">
+          <h3>Ваша корзина пуста</h3>
+        </div>
+      </template>
     </div>
     <lines :colorClass="'line-grey'" />
     <div class="subtotal">
@@ -38,36 +43,43 @@
       </h3>
       <p class="subtotal__discr">Taxes and shipping are calculated at checkout</p>
     </div>
-    <btn :text="'Go to checkout'" />
+    <btn>Go to checkout</btn>
   </div>
 </template>
 <script>
-import lines from "./elements/line.vue";
-import btn from "./elements/btn.vue";
-import btnQuantity from "./elements/btn-quantity.vue";
+import lines from "@/components/elements/line.vue";
+import btn from "@/components/elements/btn.vue";
+import btnQuantity from "@/components/elements/btn-quantity.vue";
+import { mapState } from "vuex";
+
 export default {
   components: { lines, btn, btnQuantity },
-  data() {
-    return {
-      cartGoods: [
-        {
-          id: 1,
-          title: "Graystone vase",
-          discr: "A timeless ceramic vase with a tri color grey glaze.",
-          price: 85,
-          quantity: 1,
-          img: "/products/product.png",
-        },
-        {
-          id: 2,
-          title: "Basic white vase",
-          discr: "Beautiful and simple this is one for the classics",
-          price: 85,
-          quantity: 1,
-          img: "/products/product1.png",
-        },
-      ],
-    };
+  // data() {
+  //   return {
+  //     cartGoods: [
+  //       {
+  //         id: 1,
+  //         title: "Graystone vase",
+  //         discr: "A timeless ceramic vase with a tri color grey glaze.",
+  //         price: 85,
+  //         quantity: 1,
+  //         img: "/products/product.png",
+  //       },
+  //       {
+  //         id: 2,
+  //         title: "Basic white vase",
+  //         discr: "Beautiful and simple this is one for the classics",
+  //         price: 85,
+  //         quantity: 1,
+  //         img: "/products/product1.png",
+  //       },
+  //     ],
+  //   };
+  // },
+  computed: {
+    ...mapState({
+      cartGoods: (state) => state.order,
+    }),
   },
 };
 </script>
@@ -158,14 +170,14 @@ export default {
   text-align: right;
   padding: 0 24px;
   &__value {
-    color: #4e4d93;
+    color: var(--primary);
   }
   &__value span {
-    color: #2a254b;
+    color: var(--darkPrimary);
     margin-left: 5px;
   }
   &__discr {
-    color: #4e4d93;
+    color: var(--primary);
   }
 }
 .line-container {

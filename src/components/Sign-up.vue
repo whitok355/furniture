@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import forms from "./form.vue";
+import forms from "@/components/elements/form.vue";
 export default {
   components: { forms },
 };
