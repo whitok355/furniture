@@ -6,7 +6,9 @@
     </div>
     <template v-for="(el, i) in navData" :key="i">
       <li class="navigation-li">
-        <a :to="`/products/:${el.title}`" class="navigation-li__link">{{ el.title }} </a>
+        <router-link :to="`/products/:${el.name}`" class="navigation-li__link"
+          >{{ el.title }}
+        </router-link>
       </li>
     </template>
   </ul>
@@ -26,16 +28,19 @@ export default {
       navData: [
         {
           id: 1,
+          name: "Plant_pots",
           title: "Plant pots",
           link: "#",
         },
         {
           id: 2,
+          name: "Ceramics",
           title: "Ceramics",
           link: "#",
         },
         {
           id: 3,
+          name: "Tables",
           title: "Tables",
           link: "#",
         },
@@ -46,6 +51,9 @@ export default {
     closurePopUp() {
       console.log("asdf");
       this.$emit("closurePopUp");
+    },
+    sortGood() {
+      this.$emit("sortGood");
     },
   },
 };

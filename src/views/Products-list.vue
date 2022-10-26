@@ -9,7 +9,7 @@
     </div>
     <div class="listings-items" v-else>
       <div class="err" v-if="err != ''">{{ err }}</div>
-      <listingsItem :goods="getGoods" v-else />
+      <listingsItem :goods="getMoreGood" v-else />
     </div>
     <btn @click="showMore" v-if="!loading" :btnDisabled="btnDisabled">Show more</btn>
     <signUp />
@@ -33,28 +33,43 @@ export default {
       btnDisabled: false,
     };
   },
-  async mounted() {
-    try {
-      for (let i = 0; i < 5; i++) {
-        const newArr = await api.getPopularProducts();
-        newArr.forEach((good) => this.goods.push(good));
-      }
-    } catch (err) {
-      this.err = err.toString();
-    }
-    this.loading = false;
+  mounted() {
+    this.getGoods();
   },
   methods: {
+    async getGoods() {
+      try {
+        let routerId = this.$route.params.id.slice(1);
+        const arrType = ["Plant_pots", "Ceramics", "Tables"];
+        let sortArr = [];
+        for (let i = 0; i < 5; i++) {
+          const arr = await api.getPopularProducts();
+          arr.forEach((good) => {
+            let randomId = Math.floor(Math.random() * 3);
+            good.type = arrType[randomId];
+            sortArr.push(good);
+            this.goods = sortArr;
+          });
+        }
+        if (routerId != "all") {
+          this.goods = sortArr.filter((good) => good.type === routerId);
+        }
+      } catch (err) {
+        this.err = err.toString();
+      }
+      this.loading = false;
+    },
     showMore() {
+      if (this.counteGood < this.goods.length) {
+        this.counteGood += 4;
+      }
       if (this.counteGood >= this.goods.length) {
         this.btnDisabled = true;
-      } else {
-        this.counteGood += 4;
       }
     },
   },
   computed: {
-    getGoods() {
+    getMoreGood() {
       return this.goods.slice(0, this.counteGood);
     },
   },

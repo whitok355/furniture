@@ -1,6 +1,6 @@
 <template>
   <div class="btn-link">
-    <router-link to="/products" :class="activeClass">
+    <router-link to="/products/:all" :class="activeClass">
       <slot />
     </router-link>
   </div>
