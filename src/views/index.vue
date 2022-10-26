@@ -1,4 +1,5 @@
 <template>
+  <Navigation />
   <HeroBlock />
   <Features />
   <div class="err" v-if="err.boolValue">{{ err.text }}</div>
@@ -25,6 +26,7 @@ import ListingsNew from "@/components/listings-block/Listings-new.vue";
 import ListingsOur from "@/components/listings-block/Listings-our.vue";
 import SignUp from "@/components/sign-up.vue";
 import Discription from "@/components/Discription.vue";
+import Navigation from "@/components/elements/Navigation.vue";
 import api from "@/api.js";
 export default {
   components: {
@@ -34,6 +36,7 @@ export default {
     ListingsOur,
     SignUp,
     Discription,
+    Navigation,
   },
   data() {
     return {

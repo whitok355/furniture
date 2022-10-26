@@ -1,5 +1,5 @@
 <template>
-  <div class="pop-up animation">
+  <div class="pop-up animation" v-if="viewPopUp">
     <div class="pop-up-top">
       <h4
         id="signIn"
@@ -17,7 +17,7 @@
       >
         Registration
       </h4>
-      <close :color="'black'" @click="closurePopUp" />
+      <close :color="'black'" @click="showPopUpA" />
     </div>
     <form class="pop-up-form" v-if="active">
       <input class="pop-up-form__el" placeholder="Enter your email" />
@@ -39,6 +39,7 @@
 <script>
 import btn from "@/components/elements/btn.vue";
 import close from "@/components/svg/close.vue";
+import { mapState, mapActions } from "vuex";
 export default {
   components: { btn, close },
   data() {
@@ -47,6 +48,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["showPopUpA"]),
     changeForm(e) {
       if (e.target.id === "signIn") {
         this.active = true;
@@ -58,6 +60,11 @@ export default {
     closurePopUp() {
       this.$emit("closurePopUp");
     },
+  },
+  computed: {
+    ...mapState({
+      viewPopUp: (state) => state.viewPopUp,
+    }),
   },
 };
 </script>

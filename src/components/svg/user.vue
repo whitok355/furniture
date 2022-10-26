@@ -1,5 +1,6 @@
 <template>
   <svg
+    @click="showPopUpA"
     id="user"
     class="icon-user"
     width="16"
@@ -19,7 +20,15 @@
     />
   </svg>
 </template>
-<script></script>
+<script>
+import { mapActions } from "vuex";
+
+export default {
+  methods: {
+    ...mapActions(["showPopUpA"]),
+  },
+};
+</script>
 <style lnag="scss" scoped>
 .icon-user:hover {
   cursor: pointer;

@@ -1,4 +1,5 @@
 <template>
+  <Navigation @click="sorting" />
   <div class="products">
     <h2 class="products__title">View all products</h2>
     <div class="filter-container">
@@ -21,43 +22,48 @@ import signUp from "@/components/Sign-up.vue";
 import btn from "@/components/elements/btn.vue";
 import filterEL from "@/components/elements/filter.vue";
 import loader from "@/components/elements/loader.vue";
+import Navigation from "@/components/elements/Navigation.vue";
 import api from "@/api.js";
 export default {
-  components: { listingsItem, signUp, btn, filterEL, loader },
+  components: { listingsItem, signUp, btn, filterEL, loader, Navigation },
   data() {
     return {
       loading: true,
       goods: [],
+      sortArr: [],
       counteGood: 4,
       err: "",
       btnDisabled: false,
     };
   },
-  mounted() {
-    this.getGoods();
+  async mounted() {
+    try {
+      const arrType = ["Plant_pots", "Ceramics", "Tables"];
+      for (let i = 0; i < 5; i++) {
+        const arr = await api.getPopularProducts();
+        arr.forEach((good) => {
+          let randomId = Math.floor(Math.random() * 3);
+          good.type = arrType[randomId];
+          this.sortArr.push(good);
+          this.goods = this.sortArr;
+        });
+        if (this.getRouteId != "all") {
+          this.sorting();
+        }
+      }
+    } catch (err) {
+      this.err = err.toString();
+    }
+    this.loading = false;
   },
   methods: {
-    async getGoods() {
-      try {
-        let routerId = this.$route.params.id.slice(1);
-        const arrType = ["Plant_pots", "Ceramics", "Tables"];
-        let sortArr = [];
-        for (let i = 0; i < 5; i++) {
-          const arr = await api.getPopularProducts();
-          arr.forEach((good) => {
-            let randomId = Math.floor(Math.random() * 3);
-            good.type = arrType[randomId];
-            sortArr.push(good);
-            this.goods = sortArr;
-          });
-        }
-        if (routerId != "all") {
-          this.goods = sortArr.filter((good) => good.type === routerId);
-        }
-      } catch (err) {
-        this.err = err.toString();
+    sorting() {
+      this.counteGood = 4;
+      this.btnDisabled = false;
+      let routeId = this.getRouteId;
+      if (routeId != "all") {
+        this.goods = this.sortArr.filter((good) => good.type === routeId);
       }
-      this.loading = false;
     },
     showMore() {
       if (this.counteGood < this.goods.length) {
@@ -69,6 +75,9 @@ export default {
     },
   },
   computed: {
+    getRouteId() {
+      return this.$route.params.id.slice(1);
+    },
     getMoreGood() {
       return this.goods.slice(0, this.counteGood);
     },

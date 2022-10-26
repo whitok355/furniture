@@ -1,4 +1,5 @@
 <template>
+  <Navigation />
   <card :good="good" :loading="loading" :key="good.id" />
   <div class="err" v-if="err.boolValue">{{ err.text }}</div>
   <listingsNew
@@ -16,9 +17,10 @@ import features from "@/components/Features.vue";
 import listingsNew from "@/components/listings-block/Listings-new.vue";
 import SignUp from "@/components/Sign-up.vue";
 import card from "@/components/card-goods/card.vue";
+import Navigation from "@/components/elements/Navigation.vue";
 import api from "@/api.js";
 export default {
-  components: { features, listingsNew, SignUp, card },
+  components: { features, listingsNew, SignUp, card, Navigation },
   data() {
     return {
       loading: true,

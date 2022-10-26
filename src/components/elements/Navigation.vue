@@ -1,8 +1,8 @@
 <template>
-  <ul class="navigation" v-if="isNavigation">
+  <ul class="navigation">
     <div class="icons">
       <cart />
-      <user @click="closurePopUp" />
+      <user />
     </div>
     <template v-for="(el, i) in navData" :key="i">
       <li class="navigation-li">
@@ -18,11 +18,6 @@ import cart from "@/components/svg/cart.vue";
 import user from "@/components/svg/user.vue";
 export default {
   components: { cart, user },
-  props: {
-    isNavigation: {
-      type: Boolean,
-    },
-  },
   data() {
     return {
       navData: [
@@ -47,24 +42,17 @@ export default {
       ],
     };
   },
-  methods: {
-    closurePopUp() {
-      console.log("asdf");
-      this.$emit("closurePopUp");
-    },
-    sortGood() {
-      this.$emit("sortGood");
-    },
-  },
 };
 </script>
 <style lang="scss" scoped>
 .navigation {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 20px 24px;
-
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px 24px;
+  }
   &-li:hover &-li__link {
     border-bottom: 1px solid var(--darkPrimary);
   }

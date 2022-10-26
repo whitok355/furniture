@@ -2,7 +2,7 @@
   <header class="header">
     <router-link to="/" id="logo" class="header-title"><h1>Avion</h1></router-link>
     <search />
-    <user @click="closurePopUp" />
+    <user />
     <cart />
     <svg
       @click="showNavigation"
@@ -27,15 +27,6 @@ import user from "@/components/svg/user.vue";
 import search from "@/components/svg/search.vue";
 export default {
   components: { cart, user, search },
-  methods: {
-    showNavigation() {
-      this.$emit("showNavigation");
-    },
-    closurePopUp() {
-      console.log("asdf");
-      this.$emit("closurePopUp");
-    },
-  },
 };
 </script>
 <style lang="scss" scoped>

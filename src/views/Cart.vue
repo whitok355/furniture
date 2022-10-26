@@ -1,4 +1,5 @@
 <template>
+  <Navigation />
   <div class="cart">
     <h2 class="cart__title">Your shopping cart</h2>
     <div class="cart-table-titles">
@@ -50,32 +51,11 @@
 import lines from "@/components/elements/line.vue";
 import btn from "@/components/elements/btn.vue";
 import btnQuantity from "@/components/elements/btn-quantity.vue";
+import Navigation from "@/components/elements/Navigation.vue";
 import { mapState } from "vuex";
 
 export default {
-  components: { lines, btn, btnQuantity },
-  // data() {
-  //   return {
-  //     cartGoods: [
-  //       {
-  //         id: 1,
-  //         title: "Graystone vase",
-  //         discr: "A timeless ceramic vase with a tri color grey glaze.",
-  //         price: 85,
-  //         quantity: 1,
-  //         img: "/products/product.png",
-  //       },
-  //       {
-  //         id: 2,
-  //         title: "Basic white vase",
-  //         discr: "Beautiful and simple this is one for the classics",
-  //         price: 85,
-  //         quantity: 1,
-  //         img: "/products/product1.png",
-  //       },
-  //     ],
-  //   };
-  // },
+  components: { lines, btn, btnQuantity, Navigation },
   computed: {
     ...mapState({
       cartGoods: (state) => state.order,
